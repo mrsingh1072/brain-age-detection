@@ -5,7 +5,7 @@ Flask application for serving brain age predictions using CNN models on MRI imag
 Title: Explainable Brain Age Prediction and Comparative Analysis Using CNN and Vision Transformer Models
 Author: NeuroAge XAI Lab
 """
-from vit_model import load_vit_model, predict_vit
+#from vit_model import load_vit_model, predict_vit
 from flask_cors import CORS
 from flask import Flask, request, jsonify, send_file, Response, send_from_directory
 from werkzeug.utils import secure_filename
@@ -75,29 +75,39 @@ except Exception as e:
     device = None
 
 # Initialize ViT model with proper error handling
+# vit_model_instance = None
+# vit_device = None
+# vit_status = "not_available"
+# vit_message = "ViT model not loaded"
+
+# try:
+#     logger.info("Attempting to load ViT model...")
+#     vit_result = load_vit_model()
+    
+#     if vit_result['status'] == 'success' or vit_result['status'] == 'untrained':
+#         vit_model_instance = vit_result['model']
+#         vit_device = vit_result['device']
+#         vit_status = vit_result['status']
+#         vit_message = vit_result['message']
+#         logger.info(f"✅ ViT model initialized: {vit_message}")
+#     else:
+#         logger.warning(f"ViT model initialization failed: {vit_result['message']}")
+#         vit_status = 'error'
+#         vit_message = vit_result['message']
+# except Exception as e:
+#     logger.error(f"Failed to initialize ViT model: {str(e)}")
+#     vit_status = 'error'
+#     vit_message = str(e)
+# ============================================================================
+# ViT DISABLED FOR RENDER DEPLOYMENT
+# ============================================================================
+
 vit_model_instance = None
 vit_device = None
-vit_status = "not_available"
-vit_message = "ViT model not loaded"
+vit_status = "disabled"
+vit_message = "ViT disabled for Render deployment"
 
-try:
-    logger.info("Attempting to load ViT model...")
-    vit_result = load_vit_model()
-    
-    if vit_result['status'] == 'success' or vit_result['status'] == 'untrained':
-        vit_model_instance = vit_result['model']
-        vit_device = vit_result['device']
-        vit_status = vit_result['status']
-        vit_message = vit_result['message']
-        logger.info(f"✅ ViT model initialized: {vit_message}")
-    else:
-        logger.warning(f"ViT model initialization failed: {vit_result['message']}")
-        vit_status = 'error'
-        vit_message = vit_result['message']
-except Exception as e:
-    logger.error(f"Failed to initialize ViT model: {str(e)}")
-    vit_status = 'error'
-    vit_message = str(e)
+logger.info("ViT model loading skipped")
 
 # Initialize explainability engine
 try:
@@ -480,53 +490,10 @@ def predict():
 
 @app.route('/predict-vit', methods=['POST'])
 def predict_vit_route():
-    """
-    Deprecated: Use /predict instead for both CNN and ViT predictions.
-    This endpoint is kept for backward compatibility.
-    """
-    logger.warning("Deprecated endpoint /predict-vit called. Use /predict instead.")
-    
-    if vit_model_instance is None:
-        return jsonify({
-            "status": vit_status,
-            "message": vit_message,
-            "error": "ViT model not available"
-        }), 503
-
-    image_bytes, error = get_image_from_request(request)
-    if error:
-        return jsonify({
-            "status": "error",
-            "error": error
-        }), 400
-
-    try:
-        image_tensor = ImagePreprocessor.preprocess_from_bytes(image_bytes)
-        
-        # Convert grayscale to RGB for ViT
-        image_tensor = image_tensor.repeat(1, 3, 1, 1).float()
-        
-        # Run ViT prediction
-        vit_age, vit_confidence = predict_vit(
-            model=vit_model_instance,
-            image_tensor=image_tensor,
-            device=vit_device,
-            min_age=20,
-            max_age=90
-        )
-
-        return jsonify({
-            "status": "success",
-            "predicted_age": round(vit_age, 1),
-            "confidence": vit_confidence
-        }), 200
-
-    except Exception as e:
-        logger.error(f"ViT prediction error: {str(e)}", exc_info=True)
-        return jsonify({
-            "status": "error",
-            "error": str(e)
-        }), 500
+    return jsonify({
+        "status": "disabled",
+        "message": "ViT model disabled for deployment"
+    }), 503
 
 @app.route('/predict/batch', methods=['POST'])
 def predict_batch():

@@ -304,7 +304,9 @@ export default function HeatmapVisualization({ imageUrl, heatmapUrl, explanation
         </motion.div>
       )}
 
+      
       {/* Debug Panel */}
+      {/*
       {showDebug && explanation && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -319,16 +321,7 @@ export default function HeatmapVisualization({ imageUrl, heatmapUrl, explanation
           </pre>
         </motion.div>
       )}
-
-      {/* Debug Toggle */}
-      <motion.button
-        onClick={() => setShowDebug(!showDebug)}
-        whileHover={{ scale: 1.05 }}
-        className="text-xs text-gray-500 hover:text-gray-300 transition-colors flex items-center space-x-1"
-      >
-        <span>{showDebug ? '▼' : '▶'}</span>
-        <span>Debug Panel</span>
-      </motion.button>
+      */}
     </motion.div>
   );
 }
