@@ -2,9 +2,24 @@ import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const footerLinks = {
-  Product: ['Features', 'How It Works'],
-  Project: ['About Project', 'Methodology', 'Technology Stack', 'Dataset'],
-  Resources: ['Documentation', 'User Guide', 'Support', 'Contact'],
+  Product: [
+    { name: 'Features', href: '#features' },
+    { name: 'How It Works', href: '#how-it-works' },
+  ],
+
+  Project: [
+    { name: 'About Project', href: '#' },
+    { name: 'Methodology', href: '#' },
+    { name: 'Technology Stack', href: '#' },
+    { name: 'Dataset', href: '#' },
+  ],
+
+  Resources: [
+    { name: 'Documentation', href: '#' },
+    { name: 'User Guide', href: '#' },
+    { name: 'Support', href: '#' },
+    { name: 'Contact', href: '#contact' },
+  ],
 };
 
 
@@ -79,17 +94,20 @@ export default function Footer() {
                 <h3 className="text-white font-semibold mb-4">{title}</h3>
                 <ul className="space-y-3">
                   {links.map((link) => (
-                    <li key={link}>
-                      <motion.a
-                        href="#"
-                        whileHover={{ x: 5, color: '#06b6d4' }}
-                        className="text-gray-400 text-sm transition-colors hover:text-cyan-400 flex items-center space-x-2 group"
-                      >
-                        <span>{link}</span>
-                        <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </motion.a>
-                    </li>
-                  ))}
+  <li key={link.name}>
+    <motion.a
+      href={link.href}
+      whileHover={{ x: 5, color: '#06b6d4' }}
+      className="text-gray-400 text-sm transition-colors hover:text-cyan-400 flex items-center space-x-2 group"
+    >
+      <span>{link.name}</span>
+      <ExternalLink
+        size={12}
+        className="opacity-0 group-hover:opacity-100 transition-opacity"
+      />
+    </motion.a>
+  </li>
+))}
                 </ul>
               </motion.div>
             );
@@ -126,7 +144,7 @@ export default function Footer() {
             </motion.button>
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>All systems operational</span>
+              <span>AI Model Active</span>
             </div>
           </div>
         </motion.div>
