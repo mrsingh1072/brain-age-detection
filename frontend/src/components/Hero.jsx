@@ -23,7 +23,7 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen pt-32 pb-20 px-4 flex items-center justify-center relative overflow-hidden">
+    <section className="pt-24 pb-4 px-4 flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
         {/* Gradient orbital */}
@@ -114,7 +114,7 @@ export default function Hero() {
         {/* Floating Cards - Preview */}
         <motion.div
           variants={itemVariants}
-          className="mt-16 relative h-96 md:h-[28rem]"
+          className="mt-8 relative h-56 md:h-64"
         >
           {/* Left Card */}
           <motion.div
