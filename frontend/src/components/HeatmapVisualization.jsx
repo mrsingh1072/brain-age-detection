@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function HeatmapVisualization({ imageUrl, heatmapUrl, explanation }) {
   const [viewMode, setViewMode] = useState('comparison'); // 'original', 'heatmap', 'overlay', 'comparison'
   const [hoveredRegion, setHoveredRegion] = useState(null);
-  const [showDebug, setShowDebug] = useState(false);
+  //const [showDebug, setShowDebug] = useState(false);
 
   // Get regions from backend explanation or use defaults
   const backendRegions = explanation?.important_regions || [];
@@ -148,7 +148,7 @@ export default function HeatmapVisualization({ imageUrl, heatmapUrl, explanation
                   src={imageUrl}
                   alt="Original MRI"
                   className="w-full h-64 md:h-72 object-cover"
-                  onError={(e) => console.error('Original image failed:', imageUrl)}
+                  onError={() => console.error('Original image failed:', imageUrl)}
                 />
               </div>
             </motion.div>
@@ -203,7 +203,7 @@ export default function HeatmapVisualization({ imageUrl, heatmapUrl, explanation
                   src={imageUrl}
                   alt="Original"
                   className="w-full h-72 object-cover"
-                  onError={(e) => console.error('Original overlay image failed:', imageUrl)}
+                  onError={() => console.error('Original overlay image failed:', imageUrl)}
                 />
                 {heatmapUrl && (
                   <motion.div
@@ -218,7 +218,7 @@ export default function HeatmapVisualization({ imageUrl, heatmapUrl, explanation
                       className="w-full h-full object-cover opacity-60"
                       onError={(e) => {
                         console.error('Overlay heatmap failed:', heatmapUrl);
-                        e.style.display = 'none';
+                        e.target.style.display = 'none';
                       }}
                     />
                   </motion.div>
