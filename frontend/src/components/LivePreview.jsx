@@ -150,7 +150,7 @@ export default function LivePreview() {
     {/* Original MRI */}
     <div className="relative rounded-xl overflow-hidden border border-white/10">
       <img
-        src="/demo/original.jpg"
+        src="/demo/original.png"
         alt="Original MRI"
         className="w-full h-64 object-contain bg-slate-900"
       />
@@ -164,7 +164,7 @@ export default function LivePreview() {
     {/* Heatmap */}
     <div className="relative rounded-xl overflow-hidden border border-purple-500/30">
       <img
-        src="/demo/heatmap.jpg"
+        src="/demo/heatmap.png"
         alt="Grad-CAM Heatmap"
         className="w-full h-64 object-contain bg-slate-900"
       />
@@ -178,7 +178,7 @@ export default function LivePreview() {
     {/* Overlay */}
     <div className="relative rounded-xl overflow-hidden border border-cyan-500/30">
       <img
-        src="/demo/overlay.jpg"
+        src="/demo/overlay.png"
         alt="MRI Overlay"
         className="w-full h-64 object-contain bg-slate-900"
       />
