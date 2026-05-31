@@ -2,10 +2,9 @@ import { motion } from 'framer-motion';
 import { Github, Twitter, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const footerLinks = {
-  Product: ['Features', 'How It Works', 'Pricing', 'API Docs'],
-  Company: ['About', 'Blog', 'Careers', 'Press'],
-  Resources: ['Documentation', 'Support', 'Community', 'Contact'],
-  Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Security'],
+  Product: ['Features', 'How It Works'],
+  Project: ['About Project', 'Methodology', 'Technology Stack', 'Dataset'],
+  Resources: ['Documentation', 'User Guide', 'Support', 'Contact'],
 };
 
 
