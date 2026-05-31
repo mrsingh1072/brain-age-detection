@@ -102,7 +102,7 @@ export default function Dashboard() {
       formData.append('image', imageFile);
       
       // API call to backend
-      const response = await fetch('http://127.0.0.1:5000/predict', {
+      const response = await fetch('https://brain-age-prediction-4ghg.onrender.com/predict', {
         method: 'POST',
         body: formData,
       });
@@ -120,7 +120,7 @@ export default function Dashboard() {
       
       // Extract visualization path and build full URL
       const vizPath = data.explanation?.visualization_path;
-      const heatmapUrl = vizPath ? `http://127.0.0.1:5000${vizPath}` : null;
+      const heatmapUrl = vizPath ? `https://brain-age-prediction-4ghg.onrender.com${vizPath}` : null;
       console.log('🔗 CONSTRUCTED HEATMAP URL:', heatmapUrl);
       
       setUploadedImage(URL.createObjectURL(imageFile));

@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 function clampApiBase(raw) {
   const v = String(raw || "").trim().replace(/\/+$/, "");
-  return v || "http://127.0.0.1:5000";
+  return v || "https://brain-age-prediction-4ghg.onrender.com";
 }
 
 function basenameFromPath(p) {
