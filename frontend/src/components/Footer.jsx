@@ -13,7 +13,7 @@ const socialLinks = [
   { icon: Github, href: 'https://github.com/mrsingh1072', label: 'GitHub' },
   { icon: Twitter, href: 'https://x.com/Mrsingh1072', label: 'Twitter' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/saurabh-singh-959b48323?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
-  { icon: Mail, href: 'saurabhkumar08843@gmail.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:saurabhkumar08843@gmail.com', label: 'Email' },
 ];
 
 export default function Footer() {
