@@ -372,39 +372,47 @@ def predict():
     vit_result = {
         "predicted_age": None,
         "confidence": "unknown",
-        "status": "not_available"
+        "status": "not_available",
+        "message": "ViT model disabled for deployment"
     }
     
-    if vit_model_instance is not None:
-        try:
-            logger.info("Running ViT model inference...")
+    # if vit_model_instance is not None:
+    #     try:
+    #         logger.info("Running ViT model inference...")
             
-            # Convert grayscale to RGB for ViT
-            image_tensor_vit = image_tensor.clone()
-            if image_tensor_vit.shape[1] == 1:
-                image_tensor_vit = image_tensor_vit.repeat(1, 3, 1, 1)
+    #         # Convert grayscale to RGB for ViT
+    #         image_tensor_vit = image_tensor.clone()
+    #         if image_tensor_vit.shape[1] == 1:
+    #             image_tensor_vit = image_tensor_vit.repeat(1, 3, 1, 1)
             
-            vit_age, vit_confidence = predict_vit(
-                model=vit_model_instance,
-                image_tensor=image_tensor_vit,
-                device=vit_device,
-                min_age=20,
-                max_age=90
-            )
+    #         vit_age, vit_confidence = predict_vit(
+    #             model=vit_model_instance,
+    #             image_tensor=image_tensor_vit,
+    #             device=vit_device,
+    #             min_age=20,
+    #             max_age=90
+    #         )
             
-            logger.info(f"ViT prediction successful: {vit_age} years (confidence: {vit_confidence})")
-            vit_result["predicted_age"] = round(vit_age, 1)
-            vit_result["status"] = "success"
-            vit_result["confidence"] = vit_confidence
+    #         logger.info(f"ViT prediction successful: {vit_age} years (confidence: {vit_confidence})")
+    #         vit_result["predicted_age"] = round(vit_age, 1)
+    #         vit_result["status"] = "success"
+    #         vit_result["confidence"] = vit_confidence
             
-        except Exception as e:
-            logger.error(f"ViT prediction failed: {str(e)}")
-            vit_result["status"] = "failed"
-            vit_result["error"] = str(e)
-    else:
-        logger.warning(f"ViT model not available. Status: {vit_status}")
-        vit_result["status"] = "not_available"
-        vit_result["message"] = vit_message
+    #     except Exception as e:
+    #         logger.error(f"ViT prediction failed: {str(e)}")
+    #         vit_result["status"] = "failed"
+    #         vit_result["error"] = str(e)
+    # ============================================================================
+    # Step 5: ViT Disabled
+    # ============================================================================
+    logger.info("ViT model disabled")
+    vit_result["status"] = "disabled"
+    vit_result["message"] = "ViT model disabled for deployment"
+            
+    # else:
+    #     logger.warning(f"ViT model not available. Status: {vit_status}")
+    #     vit_result["status"] = "not_available"
+    #     vit_result["message"] = vit_message
     
     # ========================================================================
     # Step 6: Generate Explanation with Grad-CAM Heatmap (CNN only)
