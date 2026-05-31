@@ -132,7 +132,7 @@ export default function Footer() {
           className="flex flex-col md:flex-row items-center justify-between"
         >
           <div className="text-gray-400 text-sm mb-6 md:mb-0">
-            <p>&copy; {currentYear} NeuroAge AI. All rights reserved. Developed for medical research and analysis.</p>
+            <p>&copy; {currentYear} NeuroAge AI. All rights reserved. Designed and Developed by Saurabh Kumar.</p>
           </div>
           <div className="flex items-center space-x-6">
             <motion.button
