@@ -456,6 +456,9 @@ class HeatmapVisualizer:
         Returns:
             np.ndarray: Comparison image with all three views side-by-side (uint8)
         """
+        if not HAS_OPENCV:
+            logger.warning("OpenCV unavailable, skipping comparison visualization")
+            return overlay_image
         try:
             # ====== NORMALIZE ALL IMAGES TO uint8 ======
             # Original image - ensure clean grayscale
