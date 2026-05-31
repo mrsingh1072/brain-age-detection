@@ -8,6 +8,7 @@ const footerLinks = {
   Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Security'],
 };
 
+
 const socialLinks = [
   { icon: Github, href: 'https://github.com/mrsingh1072', label: 'GitHub' },
   { icon: Twitter, href: 'https://x.com/Mrsingh1072', label: 'Twitter' },
