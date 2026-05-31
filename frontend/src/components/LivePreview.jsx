@@ -139,26 +139,58 @@ export default function LivePreview() {
             </div>
 
             {/* Explainability Section */}
-            <div className="mb-8">
-              <h3 className="text-lg font-bold text-white mb-4">Grad-CAM Heatmap Explanation</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="relative aspect-square bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-sm text-gray-500">Original MRI</span>
-                  </div>
-                </div>
-                <div className="relative aspect-square bg-gradient-to-br from-purple-900/30 to-cyan-900/30 rounded-xl overflow-hidden border border-purple-500/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-sm text-gray-500">Heatmap</span>
-                  </div>
-                </div>
-                <div className="relative aspect-square bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-cyan-500/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-sm text-gray-500">Overlay</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Explainability Section */}
+<div className="mb-8">
+  <h3 className="text-lg font-bold text-white mb-4">
+    Grad-CAM Heatmap Explanation
+  </h3>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    
+    {/* Original MRI */}
+    <div className="relative rounded-xl overflow-hidden border border-white/10">
+      <img
+        src="/demo/original.jpg"
+        alt="Original MRI"
+        className="w-full h-64 object-contain bg-slate-900"
+      />
+      <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-center">
+        <span className="text-sm text-white font-medium">
+          Original MRI
+        </span>
+      </div>
+    </div>
+
+    {/* Heatmap */}
+    <div className="relative rounded-xl overflow-hidden border border-purple-500/30">
+      <img
+        src="/demo/heatmap.jpg"
+        alt="Grad-CAM Heatmap"
+        className="w-full h-64 object-contain bg-slate-900"
+      />
+      <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-center">
+        <span className="text-sm text-white font-medium">
+          Heatmap
+        </span>
+      </div>
+    </div>
+
+    {/* Overlay */}
+    <div className="relative rounded-xl overflow-hidden border border-cyan-500/30">
+      <img
+        src="/demo/overlay.jpg"
+        alt="MRI Overlay"
+        className="w-full h-64 object-contain bg-slate-900"
+      />
+      <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 text-center">
+        <span className="text-sm text-white font-medium">
+          Overlay
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>
           </div>
         </motion.div>
 
