@@ -15,6 +15,9 @@ export default function CTA() {
               rotate: 360,
               scale: [1, 1.1, 1],
             }}
+
+
+            
             transition={{
               duration: 20,
               repeat: Infinity,
